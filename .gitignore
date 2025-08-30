@@ -1,3 +1,5 @@
-*.ipynb
+**/.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+notebooks2/*.ipynb
 notebooks/*.ipynb
 saved_vars.pkl
