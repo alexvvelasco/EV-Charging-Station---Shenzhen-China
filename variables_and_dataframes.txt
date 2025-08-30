@@ -1,0 +1,26 @@
+chargers_market_price -> charger type and market price (yuan)
+land_price -> builiding per district (price in yuan per m2)
+miscellaneous_costs -> costs for "mano de obra" (in yuan)
+district_coverage -> districts, total sites, population, total volume and total duration
+df_full -> complete dataframe with index timestamp per hour
+df_daily -> complete dataframe with index timestamp per day
+gdf_full_updated -> daily_df with new district boundaries (geometry with all 10 districts) + all features (volume, population, e_price, lat, lon...)
+
+
+
+
+
+def: 
+def estimate_cost_AC_slow(charger_num, district, base_min=8500, base_max=18500):
+    multiplier = district_multipliers.get(district, 1.0)
+    avg_base_cost = (base_min + base_max) / 2
+    return num_ports * avg_base_cost * multiplier
+
+I need to pass: 
+what site (district=place_1['district'])
+how many square meters I need (I have the price per square meter in land price)
+what type of charger I'll be buying (I have chargers_market_price = {'charger_type':['AC_slow', 'AC_fast', 'DC_slow', 'DC_fast', 'Ultra_fast'], 'price':[5000, 10000, 50000, 80000, 150000]})
+how many chargers I want (of that type)
+I need to add the miscellaneous cost (I have miscellaneous_costs = {'service':['installation','grid_connection', 'site_preparation_and_base'], 'price':[6000, 2000, 1000]})
+
+after getting that number, I wanna do this with an algorithm to predict the ROI. Will be based on the investment (that number after the function (estimate_cost_DC_charger)) lets say I get 2.000.000 yuan for buying the land + buying the chargers + paying construction costs and put it in a model with how much is the chargers doing nearby that one (by district). I guess doing KMeans. So the closest charging stations (sites) are doing for example 20000 revenue -> 12000 yuan profit DAILY, 15000 profit the 2nd closest, 13000 the 3rd closest, 18000 the 4th closest... up to 5 sites for example. Then I can calculate that my new site due the population, the lack of charging sites nearby, etc (based on the nearby ones) calculate how much profit will I do daily, weekly, monthly and with that numbers, calculate the ROI. If I invested 2.000.000 and I do monthly = 130.000, 110.000, 140.000... how much i'll take to recover my investment and start to make actual money
