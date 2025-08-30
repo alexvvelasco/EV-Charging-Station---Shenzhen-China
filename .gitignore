@@ -1,2 +1,3 @@
+*.ipynb
 notebooks/*.ipynb
 saved_vars.pkl
