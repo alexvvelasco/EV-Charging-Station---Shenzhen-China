@@ -78,13 +78,12 @@ if menu == "Find Potential New Site":
             st.session_state[key] = default
 
     st.title("Find Potential New Site")
-    st.write("Use the form below to find potential new sites for your business.")
 
     st.subheader("You can use AI to help you find the best location!")
 
     components.iframe(
         "https://itsalejandrovelasco.com/ev-chatbot",
-        height=300,
+        height=500,
         scrolling=True
     )
 
@@ -95,6 +94,7 @@ if menu == "Find Potential New Site":
     center_lon = (lon_min + lon_max) / 2
 
     # --- Address search ---
+    st.subheader("Or use the form below to find potential new sites by yourself!")
     st.write("### Select site location inside city boundary")
     st.write("You can click on the map or search by address:")
 
