@@ -9,7 +9,17 @@ import googlemaps
 
 # Load Google Maps API key
 load_dotenv()
-GOOGLE_KEY = st.secrets.get("GOOGLE_MAPS_API_KEY", os.getenv("GOOGLE_MAPS_API_KEY"))
+GOOGLE_KEY = None
+
+try:
+    GOOGLE_KEY = st.secrets["GOOGLE_MAPS_API_KEY"]
+except Exception:
+    GOOGLE_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
+
+if not GOOGLE_KEY:
+    raise ValueError("❌ Google Maps API key not found in secrets.toml or .env file.")
+
+# --- Initialize Google Maps client ---
 gmaps = googlemaps.Client(key=GOOGLE_KEY)
 
 from utils import (
