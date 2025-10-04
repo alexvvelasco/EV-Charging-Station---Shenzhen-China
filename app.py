@@ -6,6 +6,10 @@ from streamlit_folium import st_folium
 import os
 from dotenv import load_dotenv
 import googlemaps
+import streamlit as st
+import streamlit.components.v1 as components
+
+
 
 # Load Google Maps API key
 load_dotenv()
@@ -75,6 +79,15 @@ if menu == "Find Potential New Site":
 
     st.title("Find Potential New Site")
     st.write("Use the form below to find potential new sites for your business.")
+
+    st.subheader("You can use AI to help you find the best location!")
+    st.title("EV Charging Station Site Selection AI")
+
+    components.iframe(
+        "https://project-spark-61.vercel.app/ev-chatbot",
+        height=700,
+        scrolling=True
+    )
 
     # Bounding box (Shenzhen example)
     lat_min, lat_max = 22.46557, 22.818918
