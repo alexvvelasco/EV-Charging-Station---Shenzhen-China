@@ -81,11 +81,10 @@ if menu == "Find Potential New Site":
     st.write("Use the form below to find potential new sites for your business.")
 
     st.subheader("You can use AI to help you find the best location!")
-    st.title("EV Charging Station Site Selection AI")
 
     components.iframe(
-        "https://project-spark-61.vercel.app/ev-chatbot",
-        height=700,
+        "https://itsalejandrovelasco.com/ev-chatbot",
+        height=300,
         scrolling=True
     )
 
