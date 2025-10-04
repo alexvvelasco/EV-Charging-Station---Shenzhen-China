@@ -9,7 +9,8 @@ import googlemaps
 
 # Load Google Maps API key
 load_dotenv()
-gmaps = googlemaps.Client(key=os.getenv("GOOGLE_MAPS_API_KEY"))
+GOOGLE_KEY = st.secrets.get("GOOGLE_MAPS_API_KEY", os.getenv("GOOGLE_MAPS_API_KEY"))
+gmaps = googlemaps.Client(key=GOOGLE_KEY)
 
 from utils import (
     attach_site_context, haversine_km, calculate_new_site_distances,
