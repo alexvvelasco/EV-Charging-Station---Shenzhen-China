@@ -1,0 +1,10 @@
+streamlit
+folium
+streamlit-folium
+googlemaps
+python-dotenv
+pandas
+geopandas
+shapely
+numpy
+scikit-learn
