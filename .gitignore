@@ -3,3 +3,15 @@ notebooks/.ipynb_checkpoints/
 notebooks2/*.ipynb
 notebooks/*.ipynb
 saved_vars.pkl
+# Ignore local app and utilities
+app.py
+utils.py
+
+# Sensitive files
+.env
+saved_vars.pkl
+__pycache__/
+*.pkl
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
