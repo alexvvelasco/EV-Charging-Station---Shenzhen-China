@@ -32,7 +32,7 @@ from sklearn.preprocessing import (
     StandardScaler,
 )
 from sklearn.neighbors import KDTree
-from xgboost import XGBRegressor
+
 
 
 def attach_site_context(
