@@ -9,3 +9,4 @@ shapely
 numpy
 scikit-learn
 matplotlib
+imblearn
