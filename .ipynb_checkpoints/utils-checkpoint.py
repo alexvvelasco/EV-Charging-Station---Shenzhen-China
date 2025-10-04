@@ -63,6 +63,15 @@ def attach_site_context(
     )
     return ctx
 
+def haversine_km(lat1, lon1, lat2, lon2):
+    R = 6371.0088
+    p1 = np.radians(lat1)
+    p2 = np.radians(lat2)
+    dlat = np.radians(lat2 - lat1)
+    dlon = np.radians(lon2 - lon1)
+    a = np.sin(dlat / 2) ** 2 + np.cos(p1) * np.cos(p2) * np.sin(dlon / 2) ** 2
+    return 2 * R * np.arcsin(np.sqrt(a))
+
 
 def calculate_new_site_distances(new_site, df_sites):
     distances = []
@@ -98,7 +107,7 @@ def build_df_place_to_predict_knn(new_site_info, num_of_chargers, charger_type):
     'DC_fast': 150,
     'Ultra_fast': 360
 }
-    data['avg_power'] = place_3_df['charger_type'].map(rated_power_map)[0]
+    data['avg_power'] = rated_power_map.get(charger_type, 0) 
     
 
     # Create single-row DataFrame
